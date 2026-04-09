@@ -1,0 +1,12 @@
+# Build artifacts
+android/build/
+android/debug.keystore
+android/*.idsig
+
+# Runtime state
+.session
+.history.json
+server.log
+
+# Node
+node_modules/

@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #1a1814;
+  --cream: #f5e6c8;
+  --sand: #d4c4a0;
+  --tan: #b8a67e;
+  --warm-grey: #8a7e6a;
+  --ghost: #2e2a24;
+  --ghost-text: #3d3730;
+  --glow: #e8d5a8;
+  --rose: #c49090;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: -apple-system, "Helvetica Neue", "SF Pro Text", sans-serif;
+  color: var(--cream);
+  touch-action: manipulation;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* ── Brand ─────────────────────────────────── */
+
+#brand {
+  position: absolute;
+  top: 12vh;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: var(--tan);
+  opacity: 0.4;
+  font-weight: 300;
+}
+
+/* ── Session log ───────────────────────────── */
+
+#session {
+  position: absolute;
+  top: 18vh;
+  left: 10%;
+  right: 10%;
+  bottom: 30vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.session-line {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ghost-text);
+  text-align: center;
+  transition: color 0.8s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.session-line.you {
+  color: var(--ghost-text);
+}
+
+.session-line.claude {
+  color: var(--ghost-text);
+  font-style: italic;
+}
+
+.session-line.fresh {
+  color: var(--warm-grey);
+}
+
+/* ── Orb ───────────────────────────────────── */
+
+#orb-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#orb {
+  width: 200px;
+  height: 200px;
+}
+
+/* ── Status ────────────────────────────────── */
+
+#status {
+  margin-top: 32px;
+  font-size: 15px;
+  letter-spacing: 3px;
+  color: var(--tan);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  min-height: 20px;
+}
+
+#status.visible {
+  opacity: 1;
+}
+
+/* ── Heard ─────────────────────────────────── */
+
+#heard {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--warm-grey);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  max-width: 80%;
+  text-align: center;
+  min-height: 18px;
+}
+
+#heard.visible {
+  opacity: 0.7;
+}
+
+/* ── Streaming text ────────────────────────── */
+
+#stream {
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--sand);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  max-width: 80%;
+  max-height: 30vh;
+  overflow-y: auto;
+  text-align: center;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  scrollbar-width: none;
+}
+
+#stream::-webkit-scrollbar {
+  display: none;
+}
+
+#stream.visible {
+  opacity: 0.7;
+}
+
+/* ── Hint ──────────────────────────────────── */
+
+#hint {
+  position: absolute;
+  bottom: 8vh;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--warm-grey);
+  opacity: 0.3;
+  transition: opacity 0.6s ease;
+}
+
+#hint.hidden {
+  opacity: 0;
+}
+
+/* ── Pulse ring (behind orb on listen) ────── */
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid var(--tan);
+  animation: pulse-ring 1.5s ease-out infinite;
+  pointer-events: none;
+}

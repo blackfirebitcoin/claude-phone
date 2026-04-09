@@ -1,0 +1,17 @@
+{
+  "name": "claude-phone",
+  "version": "1.0.0",
+  "description": "Voice-controlled Claude assistant for Android via Termux",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "terminal": "node index.js",
+    "talk": "node index.js --mode push-to-talk",
+    "listen": "node index.js --mode always-on",
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
